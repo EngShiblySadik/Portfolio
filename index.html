@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadik Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@400&display=swap" rel="stylesheet">
+    <style id="dynamic-style">
+    </style>
+    <script>
+        // Dynamic color themes
+        const themes = [
+            {
+                bgGradient: "linear-gradient(120deg, #e0e7ff 0%, #f4f4f4 100%)",
+                primary: "#2a3a6e",
+                secondary: "#3b4a8b",
+                accent: "#2563eb",
+                boxBg: "#f8fafc",
+                projectBg: "#eef2fb",
+                border: "#e3e8f0",
+                shadow: "rgba(60, 80, 180, 0.12)"
+            },
+            {
+                bgGradient: "linear-gradient(120deg, #fceabb 0%, #f8b500 100%)",
+                primary: "#b25900",
+                secondary: "#f8b500",
+                accent: "#ff6f00",
+                boxBg: "#fff8e1",
+                projectBg: "#ffe0b2",
+                border: "#ffd54f",
+                shadow: "rgba(255, 111, 0, 0.12)"
+            },
+            {
+                bgGradient: "linear-gradient(120deg, #c9ffbf 0%, #ffafbd 100%)",
+                primary: "#ff5e62",
+                secondary: "#c9ffbf",
+                accent: "#845ec2",
+                boxBg: "#f3eaff",
+                projectBg: "#e0c3fc",
+                border: "#d1c4e9",
+                shadow: "rgba(132, 94, 194, 0.12)"
+            },
+            {
+                bgGradient: "linear-gradient(120deg, #43cea2 0%, #185a9d 100%)",
+                primary: "#185a9d",
+                secondary: "#43cea2",
+                accent: "#f67280",
+                boxBg: "#e0f7fa",
+                projectBg: "#b2ebf2",
+                border: "#80deea",
+                shadow: "rgba(24, 90, 157, 0.12)"
+            }
+        ];
+        const theme = themes[Math.floor(Math.random() * themes.length)];
+        const style = `
+            body {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                background: ${theme.bgGradient};
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 900px;
+                margin: 40px auto;
+                background: #fff;
+                box-shadow: 0 4px 24px ${theme.shadow};
+                border-radius: 18px;
+                padding: 40px 36px;
+                border: 1px solid ${theme.border};
+            }
+            h1, h2 {
+                color: #111 !important;
+            }
+            h1 {
+                margin-bottom: 8px;
+            }
+            h2 {
+                margin-bottom: 16px;
+            }
+            .profile {
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                margin-bottom: 40px;
+                background: ${theme.boxBg};
+                border-radius: 12px;
+                padding: 24px 28px;
+                box-shadow: 0 2px 8px ${theme.shadow};
+                border: 2px solid;
+                border-image: linear-gradient(90deg,#ff0057,#00f2fe,#fffd44,#43cea2) 1;
+                transition: border-image 0.5s;
+            }
+            .profile img {
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
+                border: 2px solid;
+                border-image: linear-gradient(90deg,#ff0057,#00f2fe,#fffd44,#43cea2) 1;
+                background: ${theme.projectBg};
+                transition: border-image 0.5s;
+            }
+            .skills, .experience, .certifications, .education, .projects {
+                background: ${theme.boxBg};
+                border-radius: 10px;
+                box-shadow: 0 1px 4px ${theme.shadow};
+                padding: 24px 22px;
+                margin-bottom: 32px;
+                border: 1px solid ${theme.border};
+            }
+            ul {
+                padding-left: 22px;
+            }
+            li {
+                margin-bottom: 10px;
+                color: ${theme.primary};
+                font-size: 1.05rem;
+            }
+            .project {
+                background: ${theme.projectBg};
+                padding: 18px 16px;
+                border-radius: 8px;
+                margin-bottom: 18px;
+                border: 1px solid ${theme.border};
+                box-shadow: 0 1px 4px ${theme.shadow};
+            }
+            .project h3 {
+                color: ${theme.primary};
+                margin-bottom: 6px;
+            }
+            .project p {
+                color: ${theme.secondary};
+                margin-bottom: 8px;
+            }
+            .project a {
+                color: ${theme.accent};
+                background: ${theme.boxBg};
+                padding: 6px 14px;
+                border-radius: 5px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background 0.2s, color 0.2s;
+            }
+            .project a:hover {
+                background: ${theme.accent};
+                color: #fff;
+            }
+            .certifications ul li {
+                color: ${theme.accent};
+                font-weight: 500;
+            }
+            footer {
+                text-align: center;
+                color: #888;
+                margin-top: 32px;
+                font-size: 1rem;
+            }
+        `;
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('dynamic-style').innerHTML = style;
+            // Animate full name gradient
+            const nameEl = document.getElementById('animated-name');
+            const profileEl = document.querySelector('.profile');
+            const profileImgEl = document.querySelector('.profile img');
+            if (nameEl) {
+                nameEl.textContent = 'MD SHIBLY SADIK';
+            }
+            let deg = 0;
+            setInterval(() => {
+                deg = (deg + 2) % 360;
+                if (nameEl) {
+                    nameEl.style.background = `linear-gradient(${deg}deg,#ff0057,#00f2fe,#fffd44,#43cea2)`;
+                    nameEl.style.webkitBackgroundClip = 'text';
+                    nameEl.style.webkitTextFillColor = 'transparent';
+                    nameEl.style.backgroundClip = 'text';
+                    nameEl.style.color = 'transparent';
+                }
+                if (profileEl) {
+                    profileEl.style.borderImage = `linear-gradient(${deg}deg,#ff0057,#00f2fe,#fffd44,#43cea2) 1`;
+                }
+                if (profileImgEl) {
+                    profileImgEl.style.borderImage = `linear-gradient(${deg}deg,#ff0057,#00f2fe,#fffd44,#43cea2) 1`;
+                    profileImgEl.style.borderRadius = '';
+                }
+            }, 60);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="profile" style="gap:48px; border: 2px solid #e3e8f0; border-radius: 16px; background: #f8fafc; box-shadow: 0 2px 8px rgba(60,80,180,0.07); margin-bottom: 40px; padding: 32px 28px;">
+            <div class="profile-img" style="display:flex;align-items:center;justify-content:center; border-right: 2px solid #dbeafe; padding-right: 32px; margin-right: 32px; min-width:260px;">
+                <img src="E:\dev\HTML Practice\profile.jpg" alt="Md Shibly Sadik Photo" style="width:240px;height:300px;max-width:100%;max-height:100%;border-radius:32px;object-fit:cover;border:3px solid;border-radius:32px;box-shadow:0 2px 12px rgba(60,80,180,0.10);">
+            </div>
+            <div class="profile-info" style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+                <h1 id="animated-name" style="font-family:'Bitcount Prop Single', monospace; font-size:3.8rem; font-weight:300; margin-bottom:0; letter-spacing:2px; background:linear-gradient(90deg,#ff0057,#00f2fe,#fffd44,#43cea2);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;transition:background 0.5s;"></h1>
+                <p style="margin-top:10px; font-size:1.2rem; font-weight:600; color:#222;">Technical & IT Support Engineer at OnnoRokom Projukti LTD</p>
+                <p style="color:#555; font-size:1rem;">Specialized in building PCs & servers, printer setup, IP phone & IP camera installation, and providing in-house software operation and support.</p>
+            </div>
+        </div>
+        <div class="skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>PC & Server Assembly and Troubleshooting</li>
+                <li>Printer Setup & Maintenance</li>
+                <li>IP Phone & IP Camera Installation</li>
+                <li>Network Configuration & Support</li>
+                <li>Windows & Linux OS Support</li>
+                <li>In-house Software Operation & User Support</li>
+                <li>Hardware Diagnostics & Repair</li>
+            </ul>
+        </div>
+        <div class="experience" style="margin-bottom:32px;">
+            <h2>Professional Experience</h2>
+            <ul>
+                <li><strong>Technical & IT Support Engineer</strong> – OnnoRokom Projukti LTD (2022–Present)<br>
+                    Responsible for building and maintaining PCs and servers, setting up printers, configuring and installing IP phones and IP cameras, and providing technical support for in-house software and users.
+                </li>
+            </ul>
+        </div>
+        <div class="certifications" style="margin-bottom:32px;">
+            <h2>Certifications</h2>
+            <ul>
+                <li>CompTIA IT Fundamentals (ITF+)</li>
+                <li>Microsoft Certified: Windows Support Technician</li>
+                <li>Cisco Certified Network Associate (CCNA) – optional</li>
+            </ul>
+        </div>
+        <div class="education" style="margin-bottom:32px; background:#f8fafc; border-radius:10px; box-shadow:0 1px 4px rgba(60,80,180,0.06); padding:24px 22px; border:1px solid #e3e8f0;">
+            <h2>Education</h2>
+            <ul>
+                <li><strong>Diploma in Computer Technology</strong><br>
+                    Completed at Magura polytechnic institute.
+                </li>
+                <li><strong>Bachelor's in Computer Science & Engineering</strong> (Ongoing)<br>
+                    Canadian University of Bangladesh
+                </li>
+            </ul>
+        </div>
+        <div class="projects">
+            <h2>Highlighted Projects</h2>
+            <div class="project">
+                <h3>Server Infrastructure Setup</h3>
+                <p>Built and configured multiple servers for office and production environments, ensuring optimal performance and security.</p>
+            </div>
+            <div class="project">
+                <h3>IP Phone & Camera Deployment</h3>
+                <p>Successfully installed and configured IP phones and IP cameras across the organization, improving communication and security.</p>
+            </div>
+            <div class="project">
+                <h3>Printer Network Integration</h3>
+                <p>Set up and maintained networked printers for seamless office operations, including troubleshooting and user training.</p>
+            </div>
+            <div class="project">
+                <h3>In-house Software Support</h3>
+                <p>Provided technical support and training for in-house software, ensuring smooth operation and resolving user issues promptly.</p>
+            </div>
+        </div>
+        <div class="mail-section" style="background:#f8fafc; border-radius:10px; box-shadow:0 1px 4px rgba(60,80,180,0.06); padding:24px 22px; margin-bottom:32px; border:1px solid #e3e8f0; max-width:500px; margin-left:auto; margin-right:auto;">
+            <h2>Contact Me</h2>
+            <form id="contact-form" style="display:flex;flex-direction:column;gap:16px;">
+                <label for="user-email" style="font-weight:600;">Your Email</label>
+                <input type="email" id="user-email" name="email" placeholder="your@email.com" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+                <label for="user-message" style="font-weight:600;">Message</label>
+                <textarea id="user-message" name="message" placeholder="Type your message here..." required rows="4" style="padding:10px;border-radius:6px;border:1px solid #ccc;"></textarea>
+                <button type="submit" style="padding:12px 0;border:none;border-radius:6px;background:#2563eb;color:#fff;font-weight:700;font-size:1.1rem;cursor:pointer;">Send Message</button>
+                <span id="mail-status" style="color:#2563eb;font-weight:600;"></span>
+            </form>
+        </div>
+        <div class="social-media" style="background:#f8fafc; border-radius:10px; box-shadow:0 1px 4px rgba(60,80,180,0.06); padding:20px 22px; margin-bottom:32px; border:1px solid #e3e8f0; max-width:500px; margin-left:auto; margin-right:auto; text-align:center;">
+            <h2 style="margin-bottom:18px;">Connect with Me</h2>
+            <a href="https://www.facebook.com/eng.mdshiblysadik" target="_blank" style="margin:0 18px; text-decoration:none; display:inline-block; vertical-align:middle;">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#2563eb"/>
+                    <path d="M25.5 20H22V32H17V20H14V16H17V13.5C17 11.57 18.57 10 20.5 10H25V14H22.5C22.22 14 22 14.22 22 14.5V16H25.5V20Z" fill="white"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/engshiblysadik" target="_blank" style="margin:0 18px; text-decoration:none; display:inline-block; vertical-align:middle;">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#0A66C2"/>
+                    <rect x="12" y="17" width="3" height="11" fill="white"/>
+                    <circle cx="13.5" cy="14.5" r="1.5" fill="white"/>
+                    <rect x="17" y="17" width="3" height="11" fill="white"/>
+                    <path d="M20 17H23C24.66 17 26 18.34 26 20V28H23V21C23 20.45 22.55 20 22 20C21.45 20 21 20.45 21 21V28H18V17H20Z" fill="white"/>
+                </svg>
+            </a>
+            <a href="https://github.com/EngShiblySadik" target="_blank" style="margin:0 18px; text-decoration:none; display:inline-block; vertical-align:middle;">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#333"/>
+                    <path d="M26.5 30V27.5C26.5 26.12 25.38 25 24 25H16C14.62 25 13.5 26.12 13.5 27.5V30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="20" cy="18" r="5" stroke="white" stroke-width="2"/>
+                </svg>
+            </a>
+        </div>
+        <footer style="text-align:center; color:#888; margin-top:32px;">
+            &copy; 2025 Md Shibly Sadik. Technical Engineer Portfolio.
+        </footer>
+    </div>
+    <script>
+        // Contact form handler
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('contact-form');
+            var status = document.getElementById('mail-status');
+            if(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(form);
+                    fetch('https://formspree.io/f/mrgndqka', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+                        body: formData
+                    }).then(function(response) {
+                        if(response.ok) {
+                            status.textContent = 'Thank you! Your message has been sent.';
+                            form.reset();
+                        } else {
+                            status.textContent = 'Oops! There was a problem. Please try again.';
+                        }
+                    }).catch(function() {
+                        status.textContent = 'Oops! There was a problem. Please try again.';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
